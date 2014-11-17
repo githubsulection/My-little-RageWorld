@@ -1,8 +1,34 @@
 
 Sirensystem:
+The goal is to create a unique modular system that allows various modular small Sirens to add up to a big 
+cool thing.
+WIP
+
+To describe this idea further.
+I personally want a smooth nice sounding fluent system, exactly what the file in the example folder offers.
+but the way how I managed it in the example file gives opportunity for more, much more.
+
+That much that I can't stop dreaming!  Ok  I'm a Nerd   >.<  
+
+The technical Side of the Idea is that the normal Sirens used have to start at the highest point of sound.
+It would simply sound awesom. No one had this before in an Arma mission.
+
+the second reason is that the implementation of Intro and outro sirens would be partly necessary,
+to make it sound smooth when turning them on for the first time. 
+And that is a point where every Officer would be unique in style of using the siren.
+and it would always sound awesom!
+
+But there lies the problem, I right now don't know how to manage the sounds and outro sounds, for example
+when there should be an outro ore an intro, when to be harsh ,when to fade out, and on what fuqn buttons to
+put all these options?
+
+
+
 
 use a different indication Siren for each new siren because they depend on another.
 
+
+this has to be overworked ......   doesen't get it anymore... 
 
 Keyhandler:
 
