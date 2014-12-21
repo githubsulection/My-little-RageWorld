@@ -1,13 +1,13 @@
 /*
-	File: fn_BlinkerLinks.sqf
-	Based on:
-		Author: mindstorm, modified by Adanteh
-		Link: http://forums.bistudio.com/showthread.php?157474-Offroad-Police-sirens-lights-and-underglow
-	Mod: Ragebone	
+	File: fn_copLights.sqf
+	Author: mindstorm, modified by Adanteh
+	Link: http://forums.bistudio.com/showthread.php?157474-Offroad-Police-sirens-lights-and-underglow
 	
+	Description:
+	Adds the light effect to cop vehicles, specifically the offroad.
 */
 
-Private ["_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback"]; 
+Private ["_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 	
 if(isNil "_vehicle" OR isNull _vehicle OR !(_vehicle getVariable "blinklightsrechts")) exitWith {};
@@ -207,16 +207,24 @@ _lightleftFront setLightDayLight true;
 _lightSPOTfront setLightDayLight true;
 _lightSPOTback setLightDayLight true;
 
+if (sunOrMoon < 1) then {
+	_brightSPOT = 4;    // Nacht 
+	_bright = 2
+} else {
+	_brightSPOT = 10;  // Tag
+	_bright = 2
+};
+
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	if((!(_vehicle getVariable "Left"))) exitWith {};
 	if((_vehicle getVariable "Right") OR (_vehicle getVariable "Warn")) exitWith {};
 	if(_leftRed) then{  
 		_leftRed = false;  
-		_lightleftFront setLightBrightness 2;  
-		_lightSPOTfront	setLightBrightness 10.0;  		
-		_lightleftBack setLightBrightness 2; 
-		_lightSPOTback setLightBrightness 10.0;  		
+		_lightleftFront setLightBrightness _bright;  
+		_lightSPOTfront	setLightBrightness _brightSPOT;  		
+		_lightleftBack setLightBrightness _bright; 
+		_lightSPOTback setLightBrightness _brightSPOT;  		
 	}else{  
 		_leftRed = true;  
 		_lightleftBack setLightBrightness 0.0;  

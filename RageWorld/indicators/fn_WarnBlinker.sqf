@@ -7,7 +7,7 @@
 	
 */
 
-Private ["_leftRed","_vehicle","_lightYello","_leftBack","_leftSPOTback","_leftFront","_leftSPOTfront","_rightBack","_rightSPOTback","_rightFront","_rightSPOTfront"]; 
+Private ["_leftRed","_vehicle","_lightYello","_leftBack","_leftSPOTback","_leftFront","_leftSPOTfront","_rightBack","_rightSPOTback","_rightFront","_rightSPOTfront","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 _lightYello = [20, 20, 0.1];
 _pos = getposASL _vehicle;
@@ -367,20 +367,28 @@ switch (typeOf _vehicle) do{
 		_rightBack 		setLightFlareSize 0.0;
 	};	
 };
+if (sunOrMoon < 1) then {
+	_brightSPOT = 4;    // Nacht 
+	_bright = 2
+}else{
+	_brightSPOT = 10;  // Tag
+	_bright = 2
+};
+
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	if((!(_vehicle getVariable "Warn"))) exitWith {};
 	if((_vehicle getVariable "Right") OR (_vehicle getVariable "Left")) exitWith {};
 	if(_leftRed) then{  
 		_leftRed = false;				
-		_leftSPOTback 	setLightBrightness 10.0;  		
-		_leftSPOTfront 	setLightBrightness 10.0;  		
-		_leftFront 		setLightBrightness 2;  
-		_leftBack  		setLightBrightness 2;
-		_rightSPOTback 	setLightBrightness 10.0;  		
-		_rightSPOTfront	setLightBrightness 10.0;  		
-		_rightFront 	setLightBrightness 2;  
-		_rightBack 		setLightBrightness 2;  
+		_leftSPOTback 	setLightBrightness _brightSPOT;  		
+		_leftSPOTfront 	setLightBrightness _brightSPOT;  		
+		_leftFront 		setLightBrightness _bright;  
+		_leftBack  		setLightBrightness _bright;
+		_rightSPOTback 	setLightBrightness _brightSPOT;  		
+		_rightSPOTfront	setLightBrightness _brightSPOT;  		
+		_rightFront 	setLightBrightness _bright;  
+		_rightBack 		setLightBrightness _bright;  
 
 	}else{  
 		_leftRed = true; 				
