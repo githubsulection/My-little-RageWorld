@@ -368,11 +368,11 @@ switch (typeOf _vehicle) do{
 	};	
 };
 if (sunOrMoon < 1) then {
-	_brightSPOT = 2;    // Nacht 
-	_bright = 1
+	_brightSPOT = 1;    // Nacht 
+	_bright = 1;
 }else{
 	_brightSPOT = 10;  // Tag
-	_bright = 2
+	_bright = 2;
 };
 
 _leftRed = true;  
