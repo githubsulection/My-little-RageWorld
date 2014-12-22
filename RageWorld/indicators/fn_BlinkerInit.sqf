@@ -16,6 +16,22 @@ if(isNil "_veh" OR isNull _veh ) exitWith {};
 if(!(alive _veh )) exitWith {}; 			
 if((driver _veh) != player) exitWith {};		
 if( !(_veh isKindOf "LandVehicle"))exitWith{};
+if!(typeOf _veh in [
+"B_Truck_01_transport_F",
+"I_MRAP_03_F",
+"O_MRAP_02_F",
+"B_Truck_01_mover_F",
+"C_Hatchback_01_sport_F",
+"C_Hatchback_01_F",
+"B_Quadbike_01_F",
+"C_SUV_01_F",
+"B_MRAP_01_F",
+"B_G_Offroad_01_repair_F",
+"B_G_Offroad_01_F",
+"C_Offroad_01_repair_F",
+"C_Offroad_01_F"
+])exitWith{};
+
 // presets.
 if(isNil {_veh getVariable"Left"})then{_veh setVariable["Left",FALSE,TRUE];};
 if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
