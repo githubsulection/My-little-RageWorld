@@ -5,19 +5,14 @@
 	Handles Everything that shouts out the siren.	
 	_veh,_siren,_time
 */
-private["_veh","_speedVeh","_speed","_outro_end","_flipp"];
+private["_veh","_RageSiren","_status","_siren","_time","_speedVeh","_speed"];
 _veh = _this select 0;
-_siren = _this select 1;
-_time = _this select 2;
 
+_RageSiren = _veh getVariable "RageSiren";
+_status = _RageSiren select 0;
+_siren = _RageSiren select 1;
+_time = _RageSiren select 2;
 
-// setUp functions:
-_outro_end = {
-	_veh setVariable["RAGEsiren",false,true];
-	if!(_veh getVariable"siren1" OR _veh getVariable"siren2")then{
-		_veh say3D "SirenLongOutro";
-	};
-};
 _flipp = {
 	// shout is not here, that is right! 
 	_veh setVariable["siren1",false,true];
