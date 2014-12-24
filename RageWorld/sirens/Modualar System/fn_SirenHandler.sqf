@@ -24,7 +24,9 @@ _oldTime = _RageSiren select 2;
 if(_status)then{
 	if(_oldSiren == _siren)then{
 		_veh setVariable["RageSiren",[false,"",0],true];
-	};
+	}else{
+		_veh setVariable["RageSiren",[true,_siren,_time],true];
+	};	
 }else{
 	_veh setVariable["RageSiren",[true,_siren,_time],true];
 	// MP call final call.
