@@ -30,7 +30,7 @@ if(_status)then{
 }else{
 	_veh setVariable["RageSiren",[true,_siren,_time],true];
 	// MP call final call.
-	[[_veh,_siren,_time],"life_fnc_RageSiren",true,false] call life_fnc_mp;
+	[[_veh],"life_fnc_RageSiren",true,false] call life_fnc_mp;
 };
 
 
