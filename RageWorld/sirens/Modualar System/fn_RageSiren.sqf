@@ -8,33 +8,17 @@
 private["_veh","_RageSiren","_status","_siren","_time","_speedVeh","_speed"];
 _veh = _this select 0;
 
-_RageSiren = _veh getVariable "RageSiren";
-_status = _RageSiren select 0;
-_siren = _RageSiren select 1;
-_time = _RageSiren select 2;
-
-_flipp = {
-	// shout is not here, that is right! 
-	_veh setVariable["siren1",false,true];
-	_veh setVariable["siren2",false,true];
-	waitUntil{
-		if(_veh getVariable "RAGEShout" AND _veh getVariable "RAGEsiren1" AND _veh getVariable "RAGEsiren2")then{false}else{true};
-	};
-};
-
-if(isNil {_veh getVariable "RAGEsiren"}) then {_veh setVariable["RAGEsiren",false,true];};
 if(isNull _veh) exitWith {};
-if(isNil {_veh getVariable "siren"}) exitWith {};
-if(_veh getVariable "RAGEsiren")exitWith{};
-// Ok it should be the first time running this ore we shouldnt be here.
-_veh say3D "SirenIntro";
-sleep 0.0;
-if!(_veh getVariable"siren")exitWith{[] call _outro_end;};		
-// loop to make things run forever and easy : D	
-while {true} do{
-	if!(_veh getVariable"siren")exitWith{[] call _outro_end;};		
-	if(_veh getVariable "RAGEShout" OR _veh getVariable "RAGEsiren1" OR _veh getVariable "RAGEsiren2")then{[]call _flipp;};	
+if(!alive _veh) exitWith {_veh setVariable[[] call _outro_end;}
+if(isNil {_veh getVariable "RageSiren"}) exitWith {};
+
+while {true} do{	
 	if(!alive _veh) exitWith {_veh setVariable[[] call _outro_end;};
+	_RageSiren = _veh getVariable "RageSiren";
+	_status = _RageSiren select 0;
+	_siren = _RageSiren select 1;
+	_time = _RageSiren select 2;
+	if!(_status)exitWith{};		
 	if(isNull _veh) exitWith {_veh setVariable[[] call _outro_end;};
 	_speedVeh = velocity  _veh;
 	_speed = _speedVeh select 0;	
