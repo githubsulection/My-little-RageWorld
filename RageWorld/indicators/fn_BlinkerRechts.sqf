@@ -99,8 +99,8 @@ if (sunOrMoon < 1) then {
 	_lightrightback setLightAttenuation [0.1, 100, 100, 1000]; 
 	_lightrightfront setLightAttenuation [0.1, 100, 100, 1000]; 
 } else {
-	_lightrightback setLightAttenuation [0.1, 0, 0, 100000]; 
-	_lightrightfront setLightAttenuation [0.1, 0, 0, 100000]; 
+	_lightrightback setLightAttenuation [0.1, 0, 0.1, 1300];
+	_lightrightfront setLightAttenuation [0.1, 0, 0.1, 1300];
 };
 
 _leftRed = true;  
