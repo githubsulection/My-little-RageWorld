@@ -5,6 +5,11 @@
 	
 	Description:
 	Adds the light effect to cop vehicles, specifically the offroad.
+
+	case "":{
+		_lightleftBack lightAttachObject [_vehicle, []]; 
+		_lightleftFront lightAttachObject [_vehicle, []];
+	};	
 */
 Private ["_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
@@ -52,19 +57,13 @@ switch (typeOf _vehicle) do{
 	case "C_Offroad_01_repair_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.80, 2.1, -0.35]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.80, -3.0, -0.35]]; 
-	};	
-	case "B_MRAP_01_F":{
-		_lightleftBack lightAttachObject [_vehicle, [-0.90, -4.3, -0.7]];
-		_lightleftFront lightAttachObject [_vehicle, [-1.05, 1.4, -0.75]]; 
-	};	
+	};		
+	//SUV
 	case "C_SUV_01_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.50, 2.6, -0.5]];
 		_lightleftBack lightAttachObject [_vehicle, [-0.52, -3.1, 0.0]]; 
 	};
-	case "B_Quadbike_01_F":{
-		_lightleftFront lightAttachObject [_vehicle, [-0.37, 1.0, 0.0]];
-		_lightleftBack lightAttachObject [_vehicle, [-0.37, -1.0, 0.0]]; 
-	};	
+	//hetchback	
 	case "C_Hatchback_01_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.83,1.7,-0.3]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.60,-2.3,-0.4]];
@@ -73,21 +72,54 @@ switch (typeOf _vehicle) do{
 		_lightleftFront lightAttachObject [_vehicle, [-0.83,1.7,-0.3]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.60,-2.3,-0.4]];
 	};	
+	//Armored
+	case "B_MRAP_01_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-0.90, -4.3, -0.7]];
+		_lightleftFront lightAttachObject [_vehicle, [-1.05, 1.4, -0.75]]; 
+	};	
+	case "O_MRAP_02_F":{ // ifrit
+		_lightleftFront lightAttachObject [_vehicle, [-0.77,1.45,-1]]; 
+		_lightleftBack lightAttachObject [_vehicle, [-0.63,-4.55,-1.3]];
+	};
+	case "I_MRAP_03_F":{
+		_lightleftFront lightAttachObject [_vehicle, [-1,2.25,-0.8]]; 
+		_lightleftBack lightAttachObject [_vehicle, [-1,-3.2,0]];
+	};
+	// hemets
 	case "B_Truck_01_mover_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.77,4.6,-0.1]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.34,-4.2,-0.55]];	
 	};
-	case "O_MRAP_02_F":{ // ifrit
-		_lightleftFront lightAttachObject [_vehicle, [-0.77,1.6,-0.7]]; 
-		_lightleftBack lightAttachObject [_vehicle, [-0.7,-4.5,-0.9]];
-	};
-	case "I_MRAP_03_F":{
-		_lightleftFront lightAttachObject [_vehicle, [-1,2.25,-0.5]]; 
-		_lightleftBack lightAttachObject [_vehicle, [-1,-3.2,0.3]];
-	};
 	case "B_Truck_01_transport_F":{
 		_lightleftBack lightAttachObject [_vehicle, [-1.1,-5,-0.3]]; 
 		_lightleftFront lightAttachObject [_vehicle, [-0.77,5.2,0.3]];
+	};	
+	//Zemeks
+	case "I_Truck_02_transport_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-0.7,-3.4,-1.2]]; 
+		_lightleftFront lightAttachObject [_vehicle, [-0.75,4.2,-1.2]];
+	};	
+	case "I_Truck_02_covered_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-0.7,-3.4,-1.2]]; 
+		_lightleftFront lightAttachObject [_vehicle, [-0.75,4.2,-1.2]];
+	};
+	//Tempests
+	case "O_Truck_03_device_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-1,-4.95,-0.95]]; 
+		_lightleftFront lightAttachObject [_vehicle, [-0.8,3,-0.8]];
+	};
+	case "O_Truck_03_covered_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-0.75,3.2,-1.02]]; 
+		_lightleftFront lightAttachObject [_vehicle, [-1,-4.7,-1.2]];
+	};
+	case "O_Truck_03_transport_F":{
+		_lightleftBack lightAttachObject [_vehicle, [-0.75,3.2,-1.02]]; 
+		_lightleftFront lightAttachObject [_vehicle, [-1,-4.7,-1.2]];
+	};
+	//quad
+	case "B_Quadbike_01_F":{
+		_lightleftFront lightAttachObject [_vehicle, [-0.37, 1.0, 0.0]];
+		_lightleftBack lightAttachObject [_vehicle, [-0.37, -1.0, 0.0]]; 
 	};	
 };
 
