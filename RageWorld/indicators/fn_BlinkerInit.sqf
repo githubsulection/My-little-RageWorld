@@ -9,8 +9,7 @@ File: fn_BlinkerInit.sqf
 	
 	gets called over the Keyhandler, by pressing  Shift + Q /E  ore just Tab ore Shift + Tab.  :D 	
 */
-Private ["_veh","_indicator"];
-// private["_state","_veh","_indicator"];
+private["_state","_veh","_indicator"];
 _veh = _this select 0;
 _indicator = _this select 1;
 if(isNil "_veh" OR isNull _veh ) exitWith {}; 	
@@ -43,45 +42,27 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
-
+/*
 // presets.
 if(isNil {_veh getVariable"Left"})then{_veh setVariable["Left",FALSE,TRUE];};
 if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
 if(isNil {_veh getVariable"Warn"})then{_veh setVariable["Warn",FALSE,TRUE];};
+*/
 
-// if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];};
-//_state = _veh getVariable "RAGE_Blinker";
+if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];};
+_state = _veh getVariable "RAGE_Blinker";
+if(_state == "" OR _state != _indicator)then{
+	_veh setVariable["RAGE_Blinker",_indicator];
 
-switch(_indicator)do{
-	case "left":{	
-		if(_veh getVariable"Left") then{	
-			_veh setVariable["Left",FALSE,TRUE];
-		} else {		
-			_veh setVariable["Left",TRUE,TRUE];
-			_veh setVariable["Warn",FALSE,TRUE];		
-			_veh setVariable["Right",FALSE,TRUE];	
-			[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;
-		};
-	};	
-	case "right":{
-		if(_veh getVariable"Right") then{	
-			_veh setVariable["Right",FALSE,TRUE];
-		} else {		
-			_veh setVariable["Right",TRUE,TRUE];	
-			_veh setVariable["Left",FALSE,TRUE];	
-			_veh setVariable["Warn",FALSE,TRUE];		
-			[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;
-		};
+	// does this work ?  what the  fucken *** ...  
+	waitUntil {left AND right AND warning};	
+
+	switch(_indicator)do{
+		case "left":{		left=[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP; 	left=false;};	
+		case "right":{		right=[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP; 	right=false;};
+		case "warning":{	warning=[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP; 	warning=false;};	
+		default{hint"Something went Wrong";};
 	};
-	case "warning":{	
-		if(_veh getVariable"Warn") then {
-		_veh setVariable["Warn",FALSE,TRUE];		
-		}else{			 
-			_veh setVariable["Warn",TRUE,TRUE];	
-			_veh setVariable["Right",FALSE,TRUE];
-			_veh setVariable["Left",FALSE,TRUE];
-			[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;			
-		};
-	};
-	default{hint" du bist bei default init Blinker";};
-};
+}else{
+	_veh setVariable["RAGE_Blinker",""];
+};	

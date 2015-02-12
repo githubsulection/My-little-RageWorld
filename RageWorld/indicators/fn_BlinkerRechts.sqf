@@ -14,7 +14,7 @@
 Private ["_vehicle","_lightrightback","_lightrightfront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 	
-if(isNil "_vehicle" OR isNull _vehicle OR !(_vehicle getVariable "Right")) exitWith {};
+if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable "RAGE_Blinker" != "right")) exitWith {};
 _lightYello = [20, 20, 0];
 
 _lightrightback = "#lightpoint" createVehicle getposATL _vehicle;
@@ -136,9 +136,8 @@ if (sunOrMoon < 1) then {
 
 _leftRed = true;  
 while{ (alive _vehicle)} do{ 	
-	_bright = (0.1 + sunOrMoon) * 3;
-	if((!(_vehicle getVariable "Right"))) exitWith {};	
-	if((_vehicle getVariable "Left") OR (_vehicle getVariable "Warn")) exitWith {};	
+	_bright = (0.1 + sunOrMoon) * 3;	
+	if((_vehicle getVariable "RAGE_Blinker" != "right")) exitWith {};
 	if(_leftRed) then{  
 		_leftRed = false; 
 		
