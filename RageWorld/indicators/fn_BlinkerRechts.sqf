@@ -148,8 +148,9 @@ while{ (alive _vehicle)} do{
 
 		_lightrightback setLightBrightness 0.0;  
 		_lightrightfront setLightBrightness 0.0; 
-	};  
+	};  	
 	sleep (_this select 1);  
 };  
 deleteVehicle _lightrightback;
 deleteVehicle _lightrightfront;
+true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

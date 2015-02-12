@@ -49,18 +49,14 @@ if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
 if(isNil {_veh getVariable"Warn"})then{_veh setVariable["Warn",FALSE,TRUE];};
 */
 
-if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];};
+if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];left=true;right=true;warning=true;};
 _state = _veh getVariable "RAGE_Blinker";
 if(_state == "" OR _state != _indicator)then{
 	_veh setVariable["RAGE_Blinker",_indicator];
-
-	// does this work ?  what the  fucken *** ...  
-	waitUntil {left AND right AND warning};	
-
 	switch(_indicator)do{
-		case "left":{		left=[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP; 	left=false;};	
-		case "right":{		right=[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP; 	right=false;};
-		case "warning":{	warning=[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP; 	warning=false;};	
+		case "left":{waitUntil{left};left=false;left=[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;};	
+		case "right":{waitUntil{right};right=false;right=[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;};
+		case "warning":{waitUntil{warning}; warning=false;warning=[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;};	
 		default{hint"Something went Wrong";};
 	};
 }else{
