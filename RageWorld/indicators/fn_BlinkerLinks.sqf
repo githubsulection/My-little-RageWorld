@@ -14,7 +14,7 @@
 Private ["_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 	
-if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {};
+if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {true; };
 _lightYello = [20, 20, 0];
 
 _lightleftBack = "#lightpoint" createVehicle getposATL _vehicle; 
@@ -140,7 +140,7 @@ if (sunOrMoon < 1) then {
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	_bright = (0.1 + sunOrMoon) * 3;	
-	if((_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {};
+	if((_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {_vehicle setVariable["RAGE_bSTAT",nil,true];};
 	if(_leftRed) then{  
 		_leftRed = false; 
 
@@ -156,4 +156,5 @@ while{ (alive _vehicle)} do{
 };  
 deleteVehicle _lightleftBack;
 deleteVehicle _lightleftFront;
-true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+_vehicle setVariable["RAGE_bSTAT",nil,true];
+//true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
