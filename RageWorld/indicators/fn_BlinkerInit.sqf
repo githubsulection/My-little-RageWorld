@@ -48,14 +48,14 @@ if(isNil {_veh getVariable"Left"})then{_veh setVariable["Left",FALSE,TRUE];};
 if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
 if(isNil {_veh getVariable"Warn"})then{_veh setVariable["Warn",FALSE,TRUE];};
 */
-if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];left=true;right=true;life_warning=true;};
+if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];};
 _state = _veh getVariable "RAGE_Blinker";
 if(_state == "" OR _state != _indicator)then{
 	_veh setVariable["RAGE_Blinker",_indicator];
 	switch(_indicator)do{
 		case "left":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}}; [[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;};	
-		case "right":{waitUntil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;};
-		case "warning":{waitUntil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;};	
+		case "right":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;};
+		case "warning":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;};	
 		default{hint"Something went Wrong"; if(true)exitWith{_veh setVariable ["RAGE_bSTAT",nil,true];};};
 	};
 	_veh setVariable ["RAGE_bSTAT",true,true];
