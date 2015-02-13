@@ -197,7 +197,7 @@ if (sunOrMoon < 1) then {
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	_bright = (0.1 + sunOrMoon) * 3;	
-	if((_vehicle getVariable "RAGE_Blinker" != "warning")) exitWith {_vehicle setVariable["RAGE_bSTAT",nil,true];};
+	if((_vehicle getVariable "RAGE_Blinker" != "warning")) exitWith {true;};
 	if(_leftRed) then{  
 		_leftRed = false;				
 		
@@ -219,5 +219,4 @@ deleteVehicle _leftFront;
 deleteVehicle _leftBack;  		
 deleteVehicle _rightFront; 	
 deleteVehicle _rightBack; 	
-_vehicle setVariable["RAGE_bSTAT",nil,true];
-//true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

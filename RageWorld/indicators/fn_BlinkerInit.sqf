@@ -9,13 +9,16 @@ File: fn_BlinkerInit.sqf
 	
 	gets called over the Keyhandler, by pressing  Shift + Q /E  ore just Tab ore Shift + Tab.  :D 	
 */
-private["_state","_veh","_indicator"];
+private["_state","_veh","_indicator","_time"];
 _veh = _this select 0;
 _indicator = _this select 1;
+_time = 0.45;
 if(isNil "_veh" OR isNull _veh ) exitWith {}; 	
 if(!(alive _veh )) exitWith {}; 			
 if((driver _veh) != player) exitWith {};		
 if( !(_veh isKindOf "LandVehicle"))exitWith{};
+
+
 if!(typeOf _veh in [
 "B_G_Offroad_01_repair_F",
 "B_G_Offroad_01_F",
@@ -42,24 +45,15 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
-/*
-// presets.
-if(isNil {_veh getVariable"Left"})then{_veh setVariable["Left",FALSE,TRUE];};
-if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
-if(isNil {_veh getVariable"Warn"})then{_veh setVariable["Warn",FALSE,TRUE];};
-*/
-if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE];};
+
+if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE]; 	ret=true; };
 _state = _veh getVariable "RAGE_Blinker";
 if(_state == "" OR _state != _indicator)then{
 	_veh setVariable["RAGE_Blinker",_indicator];
 	switch(_indicator)do{
-		case "left":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}}; [[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;};	
-		case "right":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;};
-		case "warning":{waitUntil{isNil{_veh getVariable"RAGE_bSTAT"}};[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;};	
-		default{hint"Something went Wrong"; if(true)exitWith{_veh setVariable ["RAGE_bSTAT",nil,true];};};
+		case "left":{	 waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_BlinkerLinks;};	
+		case "right":{	 waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_BlinkerRechts;};
+		case "warning":{ waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_WarnBlinker;};	
+		default{hint"Something went Wrong"; ret = true;};
 	};
-	_veh setVariable ["RAGE_bSTAT",true,true];
-}else{
-	_veh setVariable["RAGE_Blinker","",true];
-	_veh setVariable ["RAGE_bSTAT",false,true];
-};	
+}else{_veh setVariable["RAGE_Blinker","",true];};	
