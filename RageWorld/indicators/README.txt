@@ -37,27 +37,38 @@ You need a Eventhandler on Keydown, like there is one in Altis Life. and you als
 like the functions.h in Altis Life.
 
 Keyhandler:
-	
+	//put this up somewhere you like up the top, above the switchCase
+
 	_blinkerLinks = if(count (actionKeys "User2") == 0) then {16} else {(actionKeys "User2") select 0};	
-	case _blinkerLinks:{ // Q
+	_blinkerRechts = if(count (actionKeys "User1") == 0) then {18} else {(actionKeys "User1") select 0};
+	_blinkerWarn = if(count (actionKeys "User3") == 0) then {15} else {(actionKeys "User3") select 0};
+
+	
+
+switch(what ever)do{
+	....
+	....
+	...	
+	// put this into the switchCase that it looks like this.
+	case _blinkerLinks:{ // Q  Left
 		if(alive _veh && _veh != player && ((driver _veh) == player) ) then {
-			//[_veh,"left"] call life_fnc_BlinkerInit;	
 			[[_veh,"left"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;							
 		};			
-	};		
-	_blinkerRechts = if(count (actionKeys "User1") == 0) then {18} else {(actionKeys "User1") select 0};
-	case _blinkerRechts:{ // E
-		if(alive _veh && _veh != player && ((driver _veh) == player) ) then{
-		//	[_veh,"right"] call life_fnc_BlinkerInit;			
+	};			
+	case _blinkerRechts:{ // E Right
+		if(alive _veh && _veh != player && ((driver _veh) == player) ) then{		
 			[[_veh,"right"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
 		};
-	};	
-	_blinkerWarn = if(count (actionKeys "User3") == 0) then {15} else {(actionKeys "User3") select 0};
-	case _blinkerWarn:{ // Tab
+	};		
+	case _blinkerWarn:{ // Tab Warning
 		if(alive _veh && _veh != player && ((driver _veh) == player) ) then{
 			[[_veh,"warning"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
 		};
 	};	
+	...
+	...
+	...
+};	
 	
 	
 Functions.h:	
