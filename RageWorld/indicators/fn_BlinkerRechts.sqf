@@ -153,5 +153,4 @@ while{ (alive _vehicle)} do{
 };  
 deleteVehicle _lightrightback;
 deleteVehicle _lightrightfront;
-_vehicle setVariable["RAGE_bSTAT",nil,true];
 true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
