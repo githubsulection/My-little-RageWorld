@@ -46,8 +46,8 @@ if!(typeOf _veh in [
 
 "B_Quadbike_01_F"])exitWith{};
 
-if(isNil {_veh getVariable"RAGE_Blinker"})then{_veh setVariable["RAGE_Blinker","",TRUE]; 	ret=true; };
-_state = _veh getVariable "RAGE_Blinker";
+if(isNil{ret})then{ret=true;};
+_state = _veh getVariable["RAGE_Blinker",""];
 if(_state == "" OR _state != _indicator)then{
 	_veh setVariable["RAGE_Blinker",_indicator];
 	switch(_indicator)do{
