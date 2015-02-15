@@ -46,14 +46,14 @@ if!(typeOf _veh in [
 
 "B_Quadbike_01_F"])exitWith{};
 
-if(isNil{ret})then{ret=true;};
 _state = _veh getVariable["RAGE_Blinker",""];
 if(_state == "" OR _state != _indicator)then{
 	_veh setVariable["RAGE_Blinker",_indicator];
 	switch(_indicator)do{
-		case "left":{	 waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_BlinkerLinks;};	
-		case "right":{	 waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_BlinkerRechts;};
-		case "warning":{ waitUntil{ret}; ret = false; ret = [_veh,_time] call life_fnc_WarnBlinker;};	
+		case "left":{	 waitUntil{_veh getVariable ["RAGE_B",true]}; _veh setVariable ["RAGE_B",false,true]; _ret = [_veh,_time] call life_fnc_BlinkerLinks;};	
+		case "right":{	 waitUntil{_veh getVariable ["RAGE_B",true]}; _veh setVariable ["RAGE_B",false,true]; _ret = [_veh,_time] call life_fnc_BlinkerRechts;};
+		case "warning":{ waitUntil{_veh getVariable ["RAGE_B",true]}; _veh setVariable ["RAGE_B",false,true]; _ret = [_veh,_time] call life_fnc_WarnBlinker;};	
 		default{hint"Something went Wrong"; ret = true;};
 	};
+	_veh setVariable ["RAGE_B",_ret,true];
 }else{_veh setVariable["RAGE_Blinker","",true];};	
