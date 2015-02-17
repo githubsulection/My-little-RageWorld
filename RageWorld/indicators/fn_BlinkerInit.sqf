@@ -52,7 +52,7 @@ if(_state == "" OR _state != _indicator)then{
 	waitUntil{_veh getVariable ["RAGE_B",true]};
 	_veh setVariable ["RAGE_B",false,true];
 	switch(_indicator)do{
-		case "left":{	 [_veh,_time] call life_fnc_Bfn_BlinkerLinks;};	
+		case "left":{	 [_veh,_time] call life_fnc_BlinkerLinks;};	
 		case "right":{	 [_veh,_time] call life_fnc_BlinkerRechts;};
 		case "warning":{ [_veh,_time] call life_fnc_WarnBlinker;};	
 		default{hint"Something went Wrong"; _veh setVariable ["RAGE_B",true,true];};
