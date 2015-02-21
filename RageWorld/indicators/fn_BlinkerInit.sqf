@@ -38,7 +38,7 @@ if(isNil {_veh getVariable"Right"})then{_veh setVariable["Right",FALSE,TRUE];};
 if(isNil {_veh getVariable"Warn"})then{_veh setVariable["Warn",FALSE,TRUE];};
 
 switch(_indicator)do{
-	case "left":{;	
+	case "left":{
 		if(_veh getVariable"Left") then{	
 			_veh setVariable["Left",FALSE,TRUE];
 		} else {		
@@ -48,7 +48,7 @@ switch(_indicator)do{
 			[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;
 		};
 	};	
-	case "right":{;	
+	case "right":{
 		if(_veh getVariable"Right") then{	
 			_veh setVariable["Right",FALSE,TRUE];
 		} else {		
@@ -58,7 +58,7 @@ switch(_indicator)do{
 			[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;
 		};
 	};
-	case "warning":{;	
+	case "warning":{
 		if(_veh getVariable"Warn") then {
 		_veh setVariable["Warn",FALSE,TRUE];		
 		}else{			 
