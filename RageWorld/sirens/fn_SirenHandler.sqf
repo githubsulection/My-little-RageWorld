@@ -13,7 +13,7 @@ _siren = _this select 1;  // siren String.
 _time = _this select 2; // the time a specifik siren should runn.
 
 
-if(isNil{_veh getVariable"xcar"})exitWith{};
+//if(isNil{_veh getVariable"xcar"})exitWith{};
 
 // lets first check some stuff and set some thing up ....
 if(isNil{_veh getVariable "RageSiren"})then{_veh setVariable["RageSiren",[false,"",0],true];_veh setVariable ["SirenOff",true,true];}; 
