@@ -45,7 +45,7 @@ switch(_indicator)do{
 			_veh setVariable["Left",TRUE,TRUE];
 			_veh setVariable["Warn",FALSE,TRUE];		
 			_veh setVariable["Right",FALSE,TRUE];	
-			[[_veh,0.45],"life_fnc_BlinkerLinks",true,false] call life_fnc_MP;
+			[_veh,0.45] call life_fnc_BlinkerLinks;
 		};
 	};	
 	case "right":{
@@ -55,7 +55,7 @@ switch(_indicator)do{
 			_veh setVariable["Right",TRUE,TRUE];	
 			_veh setVariable["Left",FALSE,TRUE];	
 			_veh setVariable["Warn",FALSE,TRUE];		
-			[[_veh,0.45],"life_fnc_BlinkerRechts",true,false] call life_fnc_MP;
+			[_veh,0.45] call life_fnc_BlinkerRechts;
 		};
 	};
 	case "warning":{
@@ -65,7 +65,7 @@ switch(_indicator)do{
 			_veh setVariable["Warn",TRUE,TRUE];	
 			_veh setVariable["Right",FALSE,TRUE];
 			_veh setVariable["Left",FALSE,TRUE];
-			[[_veh,0.45],"life_fnc_WarnBlinker",true,false] call life_fnc_MP;			
+			[_veh,0.45] call life_fnc_WarnBlinker;			
 		};
 	};
 	default{hint" du bist bei default init Blinker";};
