@@ -73,14 +73,14 @@ switch(what ever)do{
 	...
 };	
 	
-	
-Functions.h:	
+Desciption.ext:
 
-	class RageWorld_blinker
-	{
-		file = "RageWorld\indicators";
-		class BlinkerInit {};
-		class BlinkerLinks {};
-		class BlinkerRechts {};
-		class WarnBlinker {};
-	};	
+add under 
+class CfgFunctions {
+	#include "RageWorld\RageFunction.h"     //<---  this 
+	#include "Functions.h" 					// where you find this in Altis life
+};
+
+
+
+Functions.h:	
