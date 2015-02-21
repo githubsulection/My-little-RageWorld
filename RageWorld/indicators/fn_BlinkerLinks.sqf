@@ -14,9 +14,9 @@
 Private ["_RageBlinker","_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 
-_RageBlinker = _vehicle getVariable["RAGE_Blinker",["",true];
+_RageBlinker = _vehicle getVariable["RAGE_Blinker",["",true]];
 if(isNil "_vehicle" OR isNull _vehicle OR (_RageBlinker select 0 != "left")) exitWith {_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];};
-_lightYello = [20, 20, 0];
+_lightYello = _this select 2;
 
 _lightleftBack = "#lightpoint" createVehicle getposATL _vehicle; 
 _lightleftFront = "#lightpoint" createVehicle getposATL _vehicle; 

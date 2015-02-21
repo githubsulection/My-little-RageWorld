@@ -9,7 +9,7 @@ File: fn_BlinkerInit.sqf
 	
 	gets called over the Keyhandler, by pressing  Shift + Q /E  ore just Tab ore Shift + Tab.  :D 	
 */
-private["_state","_veh","_indicator","_time","_color"];
+private["_state","_veh","_indicator","_time","_color","_wait","_RageBlinker"];
 _veh = _this select 0;
 _indicator = _this select 1;
 
@@ -50,16 +50,16 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
-_RageBlinker =_veh getVariable["RAGE_Blinker",["",true];
+_RageBlinker =_veh getVariable["RAGE_Blinker",["",true]];
 _state = _RageBlinker select 0;
 _wait = _RageBlinker select 1;
 
 if(_state == "" OR _state != _indicator)then{	
-	_veh setVariable["RAGE_Blinker",[_indicator,_wait];
+	_veh setVariable["RAGE_Blinker",[_indicator,_wait]];
 	waitUntil{_veh getVariable ["RAGE_Blinker",["",true]] select 1};
-	_veh setVariable["RAGE_Blinker",[_indicator,false];
+	_veh setVariable["RAGE_Blinker",[_indicator,false]];
 	switch(_indicator)do{
-		case "left":{	 [_veh,_time,_color] call life_fnc_Bfn_BlinkerLinks;};	
+		case "left":{	 [_veh,_time,_color] call life_fnc_BlinkerLinks;};	
 		case "right":{	 [_veh,_time,_color] call life_fnc_BlinkerRechts;};
 		case "warning":{ [_veh,_time,_color] call life_fnc_WarnBlinker;};	
 		default{hint"Something went Wrong"; _veh setVariable ["RAGE_Blinker",["",true],true];};
