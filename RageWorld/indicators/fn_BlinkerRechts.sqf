@@ -11,10 +11,11 @@
 		_lightrightfront lightAttachObject [_vehicle, []];
 	};	
 */
-Private ["_vehicle","_lightrightback","_lightrightfront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
+Private ["_RageBlinker","_vehicle","_lightrightback","_lightrightfront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
 	
-if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable "RAGE_Blinker" != "right")) exitWith {_veh setVariable ["RAGE_B",true,true];};
+_RageBlinker = _vehicle getVariable["RAGE_Blinker",["",true];	
+if(isNil "_vehicle" OR isNull _vehicle OR (_RageBlinker select 0 != "right")) exitWith {_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];};
 _lightYello = [20, 20, 0];
 
 _lightrightback = "#lightpoint" createVehicle getposATL _vehicle;
@@ -136,8 +137,10 @@ if (sunOrMoon < 1) then {
 
 _leftRed = true;  
 while{ (alive _vehicle)} do{ 	
-	_bright = (0.1 + sunOrMoon) * 3;	
-	if((_vehicle getVariable "RAGE_Blinker" != "right")) exitWith {_veh setVariable ["RAGE_B",true,true];};
+	_bright = (0.1 + sunOrMoon) * 3;
+		
+	_RageBlinker =_vehicle getVariable["RAGE_Blinker",["",true]];	
+	if((_RageBlinker select 0 != "right")) exitWith {_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];};
 	if(_leftRed) then{  
 		_leftRed = false; 
 		
@@ -153,5 +156,7 @@ while{ (alive _vehicle)} do{
 };  
 deleteVehicle _lightrightback;
 deleteVehicle _lightrightfront;
-_veh setVariable ["RAGE_B",true,true];
+
+_RageBlinker =_vehicle getVariable["RAGE_Blinker",["",true]];	
+_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];
 //true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
