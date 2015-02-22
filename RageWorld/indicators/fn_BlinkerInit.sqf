@@ -15,7 +15,9 @@ _indicator = _this select 1;
 
 // General Settings:
 _time = 0.45;
-_color = [20, 20, 0]; // RGB Code.
+//_color = [20, 20, 0]; // RGB Code. Pure Yellow	
+//_color = [255,165,0];	// nicer orange
+_color = [255,127,80];	// Darker than the above one 
 _sound = "blinker";		// My nice file, but you have the choice
 //_sound = "";				// standart.
 
@@ -53,7 +55,7 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
-_RageBlinker =_veh getVariable["RAGE_Blinker",["",true],true];
+_RageBlinker =_veh getVariable["RAGE_Blinker",["",true]];
 _state = _RageBlinker select 0;
 _wait = _RageBlinker select 1;
 
