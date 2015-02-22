@@ -55,17 +55,18 @@ switch(what ever)do{
 	case _blinkerLinks:{ // Q  Left
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then {
 			hint"Left";
-			[[vehicle player,"left"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;							
+			[vehicle player,"left"] call life_fnc_BlinkerInit;							
 		};			
 	};			
 	case _blinkerRechts:{ // E Right
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then{		
-			[[vehicle player,"right"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
+			[vehicle player,"right"] call life_fnc_BlinkerInit;			
 		};
 	};		
 	case _blinkerWarn:{ // Tab Warning
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then{
-			[[vehicle player,"warning"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
+			[vehicle player,"warning"] call life_fnc_BlinkerInit;		
+
 		};
 	};	
 	...

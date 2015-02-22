@@ -80,6 +80,12 @@ switch (typeOf _vehicle) do{
 		_rightFront 	lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
 		_rightBack 		lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];		
 	};
+	case "I_G_Offroad_01_F":{		
+		_leftFront 		lightAttachObject [_vehicle, [-0.8, 2.15, -0.35]]; 
+		_leftBack  		lightAttachObject [_vehicle, [-0.8, -2.95, -0.35]];
+		_rightFront 	lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
+		_rightBack 		lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];		
+	};
 	case "B_G_Offroad_01_repair_F":{		
 		_leftFront 		lightAttachObject [_vehicle, [-0.8, 2.15, -0.35]]; 
 		_leftBack  		lightAttachObject [_vehicle, [-0.8, -2.95, -0.35]];

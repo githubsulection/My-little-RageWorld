@@ -59,9 +59,9 @@ if(_state == "" OR _state != _indicator)then{
 	waitUntil{_veh getVariable ["RAGE_Blinker",["",true]] select 1};
 	_veh setVariable["RAGE_Blinker",[_indicator,false]];
 	switch(_indicator)do{
-		case "left":{	 [_veh,_time,_color] call life_fnc_BlinkerLinks;};	
-		case "right":{	 [_veh,_time,_color] call life_fnc_BlinkerRechts;};
-		case "warning":{ [_veh,_time,_color] call life_fnc_WarnBlinker;};	
+		case "left":{	 [[_veh,_time,_color],"life_fnc_BlinkerLinks",true,false] call life_fnc_mp;};	
+		case "right":{	 [[_veh,_time,_color],"life_fnc_BlinkerRechts",true,false] call life_fnc_mp;};	
+		case "warning":{ [[_veh,_time,_color],"life_fnc_WarnBlinker",true,false] call life_fnc_mp;};	
 		default{hint"Something went Wrong"; _veh setVariable ["RAGE_Blinker",["",true],true];};
 	};	
 }else{_veh setVariable["RAGE_Blinker",["",true],true];};	

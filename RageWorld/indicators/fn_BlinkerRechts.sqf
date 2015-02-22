@@ -47,15 +47,19 @@ switch (typeOf _vehicle) do{
 	case "B_G_Offroad_01_F":{	
 		_lightrightback lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];
 		_lightrightfront lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
-	};
-	case "B_G_Offroad_01_repair_F":{	
-		_lightrightback lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];
-		_lightrightfront lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
-	};		
+	};	
 	case "C_Offroad_01_repair_F":{			
 		_lightrightback lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];
 		_lightrightfront lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
 	};	
+	case "I_G_Offroad_01_F":{			
+		_lightrightback lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];
+		_lightrightfront lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
+	};	
+	case "B_G_Offroad_01_repair_F":{	
+		_lightrightback lightAttachObject [_vehicle, [0.8, -2.95, -0.35]];
+		_lightrightfront lightAttachObject [_vehicle, [0.8, 2.15, -0.35]];
+	};		
 	//SUV
 	case "C_SUV_01_F":{
 		_lightrightback lightAttachObject [_vehicle, [0.50,2.6,-0.5]]; 
