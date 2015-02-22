@@ -156,9 +156,7 @@ while{ (alive _vehicle)} do{
 		_lightrightback setLightBrightness 0.0;  
 		_lightrightfront setLightBrightness 0.0; 
 	};  	
-	if(_this select 3 != "")then{
-		[_vehicle,_this select 3] call life_fnc_say3D;
-	};	
+	[_vehicle,_this select 3] call life_fnc_say3D;	
 	sleep (_this select 1);  
 };  
 deleteVehicle _lightrightback;
