@@ -54,7 +54,6 @@ switch(what ever)do{
 	// put this into the switchCase that it looks like this.
 	case _blinkerLinks:{ // Q  Left
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then {
-			hint"Left";
 			[vehicle player,"left"] call life_fnc_BlinkerInit;							
 		};			
 	};			

@@ -31,6 +31,7 @@ if!(typeOf _veh in [
 "B_G_Offroad_01_F",
 "C_Offroad_01_repair_F",
 "C_Offroad_01_F",
+"I_G_Offroad_01_F",
 
 "C_SUV_01_F",
 
