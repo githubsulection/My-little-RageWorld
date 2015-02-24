@@ -17,10 +17,12 @@ _indicator = _this select 1;
 _time = 0.45;
 //_color = [20, 20, 0]; // RGB Code. Pure Yellow	
 //_color = [255,165,0];	// nicer orange
+//_color = [255,211,155]; // brighter color
 _color = [255,127,80];	// Darker than the above one 
-_sound = "blinker";		// My nice file, but you have the choice
+_sound = "blinker";		// Pierres did cut this file but you have the choice of using this
 //_sound = "";				// standart.
 
+_flareSize = 0.4;
 
 if(isNil "_veh" OR isNull _veh ) exitWith {}; 	
 if(!(alive _veh )) exitWith {}; 			
@@ -55,18 +57,16 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
-_RageBlinker =_veh getVariable["RAGE_Blinker",["",true]];
+_RageBlinker =_veh getVariable["RAGE_Blinker",""];
 _state = _RageBlinker select 0;
 _wait = _RageBlinker select 1;
 
 if(_state == "" OR _state != _indicator)then{	
-	_veh setVariable["RAGE_Blinker",[_indicator,_wait],true];
-	waitUntil{_veh getVariable ["RAGE_Blinker",["",true]] select 1};
-	_veh setVariable["RAGE_Blinker",[_indicator,false],true];
+	_veh setVariable["RAGE_Blinker",_indicator,true];	
 	switch(_indicator)do{
-		case "left":{	 [[_veh,_time,_color,_sound],"life_fnc_BlinkerLinks",true,false] call life_fnc_mp;};	
-		case "right":{	 [[_veh,_time,_color,_sound],"life_fnc_BlinkerRechts",true,false] call life_fnc_mp;};	
-		case "warning":{ [[_veh,_time,_color,_sound],"life_fnc_WarnBlinker",true,false] call life_fnc_mp;};	
-		default{hint"Something went Wrong"; _veh setVariable ["RAGE_Blinker",["",true],true];};
+		case "left":{	 [[_veh,_time,_color,_sound,_flareSize],"life_fnc_BlinkerLinks",true,false] call life_fnc_mp;};	
+		case "right":{	 [[_veh,_time,_color,_sound,_flareSize],"life_fnc_BlinkerRechts",true,false] call life_fnc_mp;};	
+		case "warning":{ [[_veh,_time,_color,_sound,_flareSize],"life_fnc_WarnBlinker",true,false] call life_fnc_mp;};	
+		default{hint"Something went Wrong"; _veh setVariable ["RAGE_Blinker","",true];};
 	};	
-}else{_veh setVariable["RAGE_Blinker",["",true],true];};	
+}else{_veh setVariable["RAGE_Blinker","",true];};	

@@ -13,10 +13,15 @@
 */
 Private ["_RageBlinker","_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
-
-_RageBlinker = _vehicle getVariable["RAGE_Blinker",["",true]];
-if(isNil "_vehicle" OR isNull _vehicle OR (_RageBlinker select 0 != "left")) exitWith {_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];};
+_time = _this select 1;
 _lightYello = _this select 2;
+_sound = _this select 3;
+_flareSize = _this select 4;
+
+waitUntil{_veh getVariable ["RAGE_Bstat",true]};
+_vehicle setVariable ["RAGE_Bstat",false,true];
+
+if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
 
 _lightleftBack = "#lightpoint" createVehicle getposATL _vehicle; 
 _lightleftFront = "#lightpoint" createVehicle getposATL _vehicle; 
@@ -128,8 +133,8 @@ switch (typeOf _vehicle) do{
 	};	
 };
 
-_lightleftBack setLightFlareSize 1;
-_lightleftFront setLightFlareSize 1;
+_lightleftBack setLightFlareSize _flareSize;
+_lightleftFront setLightFlareSize _flareSize;
 
 _lightleftBack  setLightDayLight true;
 _lightleftFront setLightDayLight true;
@@ -144,10 +149,8 @@ if (sunOrMoon < 1) then {
 
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
-	_bright = (0.1 + sunOrMoon) * 3;
-	
-	_RageBlinker =_vehicle getVariable["RAGE_Blinker",["",true]];	
-	if((_RageBlinker select 0  != "left")) exitWith {_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];};
+	_bright = (0.1 + sunOrMoon) * 3;	
+	if((_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
 	if(_leftRed) then{  
 		_leftRed = false; 
 
@@ -159,12 +162,10 @@ while{ (alive _vehicle)} do{
 		_lightleftBack setLightBrightness 0.0;  
 		_lightleftFront setLightBrightness 0.0;  	
 	};  	
-	_vehicle say3D _this select 3;
-	sleep (_this select 1);  
+	_vehicle say3D _sound;
+	sleep _time;  
 };  
 deleteVehicle _lightleftBack;
 deleteVehicle _lightleftFront;
 
-_RageBlinker =_vehicle getVariable["RAGE_Blinker",["",true]];	
-_vehicle setVariable ["RAGE_Blinker",[_RageBlinker select 0,true],true];
-//true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+_vehicle setVariable ["RAGE_Bstat",true,true];
