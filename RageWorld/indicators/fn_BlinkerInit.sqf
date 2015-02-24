@@ -57,9 +57,9 @@ if!(typeOf _veh in [
 "O_Truck_03_transport_F",
 
 "B_Quadbike_01_F"])exitWith{};
+
 _RageBlinker =_veh getVariable["RAGE_Blinker",""];
 _state = _RageBlinker select 0;
-_wait = _RageBlinker select 1;
 
 if(_state == "" OR _state != _indicator)then{	
 	_veh setVariable["RAGE_Blinker",_indicator,true];	
