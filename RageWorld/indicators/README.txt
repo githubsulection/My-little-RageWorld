@@ -54,18 +54,18 @@ switch(what ever)do{
 	// put this into the switchCase that it looks like this.
 	case _blinkerLinks:{ // Q  Left
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then {
-			hint"Left";
-			[[vehicle player,"left"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;							
+			[vehicle player,"left"] call life_fnc_BlinkerInit;							
 		};			
 	};			
 	case _blinkerRechts:{ // E Right
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then{		
-			[[vehicle player,"right"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
+			[vehicle player,"right"] call life_fnc_BlinkerInit;			
 		};
 	};		
 	case _blinkerWarn:{ // Tab Warning
 		if(alive vehicle player && vehicle player != player && ((driver vehicle player) == player) ) then{
-			[[vehicle player,"warning"],"life_fnc_BlinkerInit",true,false]  call life_fnc_mp;			
+			[vehicle player,"warning"] call life_fnc_BlinkerInit;		
+
 		};
 	};	
 	...
@@ -73,14 +73,14 @@ switch(what ever)do{
 	...
 };	
 	
-	
-Functions.h:	
+Desciption.ext:
 
-	class RageWorld_blinker
-	{
-		file = "RageWorld\indicators";
-		class BlinkerInit {};
-		class BlinkerLinks {};
-		class BlinkerRechts {};
-		class WarnBlinker {};
-	};	
+add under 
+class CfgFunctions {
+	#include "RageWorld\RageFunction.h"     //<---  this 
+	#include "Functions.h" 					// where you find this in Altis life
+};
+
+
+
+Functions.h:	

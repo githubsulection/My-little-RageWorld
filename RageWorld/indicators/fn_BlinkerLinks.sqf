@@ -11,11 +11,17 @@
 		_lightleftFront lightAttachObject [_vehicle, []];
 	};	
 */
-Private ["_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
+Private ["_RageBlinker","_vehicle","_lightleftBack","_lightleftFront","_lightYello","_leftRed","_lightSPOTfront","_lightSPOTback","_brightSPOT","_bright"]; 
 _vehicle = _this select 0;
-_vehicle setVariable ["RAGE_B",false,true];	
-if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {};
-_lightYello = [20, 20, 0];
+_time = _this select 1;
+_lightYello = _this select 2;
+_sound = _this select 3;
+_flareSize = _this select 4;
+
+waitUntil{_vehicle getVariable ["RAGE_Bstat",true]};
+_vehicle setVariable ["RAGE_Bstat",false,true];
+
+if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
 
 _lightleftBack = "#lightpoint" createVehicle getposATL _vehicle; 
 _lightleftFront = "#lightpoint" createVehicle getposATL _vehicle; 
@@ -49,12 +55,16 @@ switch (typeOf _vehicle) do{
 	case "B_G_Offroad_01_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.80, 2.1, -0.35]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.80, -3.0, -0.35]]; 
-	};	
-	case "B_G_Offroad_01_repair_F":{
+	};		
+	case "C_Offroad_01_repair_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.80, 2.1, -0.35]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.80, -3.0, -0.35]]; 
 	};	
-	case "C_Offroad_01_repair_F":{
+	case "I_G_Offroad_01_F":{
+		_lightleftFront lightAttachObject [_vehicle, [-0.80, 2.1, -0.35]]; 
+		_lightleftBack lightAttachObject [_vehicle, [-0.80, -3.0, -0.35]]; 
+	};	
+	case "B_G_Offroad_01_repair_F":{
 		_lightleftFront lightAttachObject [_vehicle, [-0.80, 2.1, -0.35]]; 
 		_lightleftBack lightAttachObject [_vehicle, [-0.80, -3.0, -0.35]]; 
 	};		
@@ -123,8 +133,8 @@ switch (typeOf _vehicle) do{
 	};	
 };
 
-_lightleftBack setLightFlareSize 1;
-_lightleftFront setLightFlareSize 1;
+_lightleftBack setLightFlareSize _flareSize;
+_lightleftFront setLightFlareSize _flareSize;
 
 _lightleftBack  setLightDayLight true;
 _lightleftFront setLightDayLight true;
@@ -140,7 +150,7 @@ if (sunOrMoon < 1) then {
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	_bright = (0.1 + sunOrMoon) * 3;	
-	if((_vehicle getVariable "RAGE_Blinker" != "left")) exitWith {};
+	if((_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
 	if(_leftRed) then{  
 		_leftRed = false; 
 
@@ -152,9 +162,10 @@ while{ (alive _vehicle)} do{
 		_lightleftBack setLightBrightness 0.0;  
 		_lightleftFront setLightBrightness 0.0;  	
 	};  	
-	sleep (_this select 1);  
+	_vehicle say3D _sound;
+	sleep _time;  
 };  
 deleteVehicle _lightleftBack;
 deleteVehicle _lightleftFront;
-//_vehicle setVariable ["RAGE_B",true,true];
-//true; // AWESOM MOMENT  IDEA !!!!!!!!!!!!! WOOOOOOOOOOOOOOOOOOOOOOOOOOOYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+_vehicle setVariable ["RAGE_Bstat",true,true];
