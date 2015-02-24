@@ -18,7 +18,7 @@ _lightYello = _this select 2;
 _sound = _this select 3;
 _flareSize = _this select 4;
 
-waitUntil{_veh getVariable ["RAGE_Bstat",true]};
+waitUntil{_vehicle getVariable ["RAGE_Bstat",true]};
 _vehicle setVariable ["RAGE_Bstat",false,true];
 
 if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
