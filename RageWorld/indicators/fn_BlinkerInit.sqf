@@ -18,7 +18,8 @@ _time = 0.45;
 //_color = [20, 20, 0]; // RGB Code. Pure Yellow	
 //_color = [255,165,0];	// nicer orange
 //_color = [255,211,155]; // brighter color
-_color = [255,127,80];	// Darker than the above one 
+//_color = [255,127,80];	// Darker than the above one 
+_color = [215,222,63];
 _sound = "blinker";		// Pierres did cut this file but you have the choice of using this
 //_sound = "";				// standart.
 
