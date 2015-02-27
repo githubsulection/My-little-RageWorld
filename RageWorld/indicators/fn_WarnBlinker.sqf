@@ -208,7 +208,8 @@ if (sunOrMoon < 1) then {
 
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
-	_bright = (0.1 + sunOrMoon) * 3;	
+	//_bright = (0.1 + sunOrMoon) * 3;
+	_bright = 2.7 * sunOrMoon^2 +0.3; // HAHA  Math.... Never thought i could use ýou  
 	if((_vehicle getVariable["RAGE_Blinker",""] != "warning")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
 	if(_leftRed) then{  
 		_leftRed = false;				
