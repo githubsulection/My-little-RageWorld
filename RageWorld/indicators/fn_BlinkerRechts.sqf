@@ -104,11 +104,11 @@ switch (typeOf _vehicle) do{
 	//Zemeks
 	case"I_Truck_02_transport_F":{
 		_lightrightback lightAttachObject [_vehicle, [0.7,-3.4,-1.2]]; 
-		_lightrightfront lightAttachObject [_vehicle, [-0.75,4.2,-1.2]];
+		_lightrightfront lightAttachObject [_vehicle, [0.75,4.2,-1.2]];
 	};	
 	case"I_Truck_02_covered_F":{
 		_lightrightback lightAttachObject [_vehicle, [0.7,-3.4,-1.2]]; 
-		_lightrightfront lightAttachObject [_vehicle, [-0.75,4.2,-1.2]];
+		_lightrightfront lightAttachObject [_vehicle, [0.75,4.2,-1.2]];
 	};	
 	//Tempests
 	case"O_Truck_03_device_F":{
