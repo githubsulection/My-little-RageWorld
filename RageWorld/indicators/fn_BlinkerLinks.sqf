@@ -19,9 +19,9 @@ _sound = _this select 3;
 _flareSize = _this select 4;
 
 waitUntil{_vehicle getVariable ["RAGE_Bstat",true]};
-_vehicle setVariable ["RAGE_Bstat",false,true];
+_vehicle setVariable ["RAGE_Bstat",false];
 
-if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
+if(isNil "_vehicle" OR isNull _vehicle OR (_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true];};
 
 _lightleftBack = "#lightpoint" createVehicle getposATL _vehicle; 
 _lightleftFront = "#lightpoint" createVehicle getposATL _vehicle; 
@@ -150,8 +150,8 @@ if (sunOrMoon < 1) then {
 _leftRed = true;  
 while{ (alive _vehicle)} do{  
 	//_bright = (0.1 + sunOrMoon) * 3;	
-	_bright = 2.7 * sunOrMoon^2 +0.3; // HAHA  Math.... Never thought i could use ýou  
-	if((_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true,true];};
+	_bright = 2.7 * sunOrMoon^4 +0.3; // HAHA  Math.... Never thought i could use ýou  
+	if((_vehicle getVariable["RAGE_Blinker",""] != "left")) exitWith {_vehicle setVariable ["RAGE_Bstat",true];};
 	if(_leftRed) then{  
 		_leftRed = false; 
 
@@ -169,4 +169,4 @@ while{ (alive _vehicle)} do{
 deleteVehicle _lightleftBack;
 deleteVehicle _lightleftFront;
 
-_vehicle setVariable ["RAGE_Bstat",true,true];
+_vehicle setVariable ["RAGE_Bstat",true];
