@@ -53,6 +53,13 @@ if!(typeOf _veh in [
 "I_Truck_02_transport_F",
 "I_Truck_02_covered_F",
 
+"C_Van_01_transport_F",
+"C_Van_01_box_F",
+
+"B_Truck_01_transport_F",
+"B_Truck_01_box_F",
+"B_Truck_01_fuel_F",
+
 "O_Truck_03_device_F",
 "O_Truck_03_covered_F",
 "O_Truck_03_transport_F",

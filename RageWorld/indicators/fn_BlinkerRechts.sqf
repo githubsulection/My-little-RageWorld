@@ -123,6 +123,31 @@ switch (typeOf _vehicle) do{
 		_lightrightback lightAttachObject [_vehicle, [0.75,3.2,-1.02]]; 
 		_lightrightfront lightAttachObject [_vehicle, [1,-4.7,-1.2]];
 	};	
+	// Truck und Truck boxer...
+	case "C_Van_01_transport_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]]; 
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
+	case "C_Van_01_transport_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]];  
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
+	case "C_Van_01_box_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]]; 
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
+	case "B_Truck_01_transport_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]]; 
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
+	case "B_Truck_01_box_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]]; 
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
+	case "B_Truck_01_fuel_F":{
+		_lightrightback lightAttachObject [_vehicle, [0.75,-3.15,-0.87]]; 
+		_lightrightfront lightAttachObject [_vehicle, [0.75,1.86,-0.4]];
+	};
 	//quad
 	case "B_Quadbike_01_F":{
 		_lightrightback lightAttachObject [_vehicle, [0.37,1.0,-0.5]]; 
