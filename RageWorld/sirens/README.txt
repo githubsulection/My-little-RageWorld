@@ -13,7 +13,8 @@ example:
 
 explanaiton;
 
-[[ 0 ,"1", 2],"life_fnc_SirenHandler",true,false] call life_fnc_mp;
+
+[ 0 ,"1", 2] call life_fnc_SirenHandler;
 
 0: the object or better vehicle that will play the sound. should allways be   vehicle player
 1: type String,  the name of the siren to call / play/ execute it.
